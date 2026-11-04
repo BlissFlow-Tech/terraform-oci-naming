@@ -1,0 +1,9 @@
+# Changelog
+
+## [1.0.1](https://github.com/BlissFlow-Tech/terraform-oci-naming/compare/v1.0.0...v1.0.1) (2026-11-04)
+
+
+### Bug Fixes
+
+* drop the trailing hyphen from vault_secret when unique is false ([879f2e0](https://github.com/BlissFlow-Tech/terraform-oci-naming/commit/879f2e02d5215b2a3eff2698b927ef19441cf89a))
+* drop the trailing hyphen from vault_secret when unique is false ([700ad42](https://github.com/BlissFlow-Tech/terraform-oci-naming/commit/700ad42895a36b87f07eb7569107da1177c60576))
