@@ -75,7 +75,7 @@ Names have the shape `<prefix>-<environment>-<region-short>-<kind>[-<suffix>]`, 
 | objectstorage\_replication\_policy | Object Storage replication policy name (<base>-os-repl[-suffix]) |
 | oke | OKE cluster name (<base>-oke[-suffix]) |
 | subnet | Subnet name (<base>-snet[-suffix]) |
-| vault\_secret | Vault secret name (<base>-secret-<suffix>; ends in a hyphen when unique is false) |
+| vault\_secret | Vault secret name (<base>-secret[-suffix]) |
 | vcn | VCN name (<base>-vcn[-suffix]) |
 <!-- END_TF_DOCS -->
 
