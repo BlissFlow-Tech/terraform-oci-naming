@@ -105,9 +105,9 @@ output "file_storage_mount_target" {
 }
 
 output "vault_secret" {
-  description = "Vault secret name (<base>-secret-<suffix>; ends in a hyphen when unique is false)"
+  description = "Vault secret name (<base>-secret[-suffix])"
   value = substr(
-    "${local.base}-secret-${local.unique_suffix != "" ? local.unique_suffix : ""}",
+    "${local.base}-secret${local.unique_suffix != "" ? "-${local.unique_suffix}" : ""}",
     0,
     100
   )
