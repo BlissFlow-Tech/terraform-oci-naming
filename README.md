@@ -7,7 +7,7 @@ Terraform module that builds consistent OCI resource names from a prefix, an env
 ```hcl
 module "naming" {
   source  = "blissflow-tech/naming/oci"
-  version = "~> 1.0"
+  version = "~> 1.1"
 
   prefix      = "acme"
   environment = "prod"
