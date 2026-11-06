@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/BlissFlow-Tech/terraform-oci-naming/compare/v2.0.0...v2.1.0) (2026-11-06)
+
+
+### Features
+
+* per-name label overrides for stricter OCI fields ([#9](https://github.com/BlissFlow-Tech/terraform-oci-naming/issues/9)) ([7dd19ce](https://github.com/BlissFlow-Tech/terraform-oci-naming/commit/7dd19cec2f538e45820de8f6f032fb8743af04c1))
+
 ## [2.0.0](https://github.com/BlissFlow-Tech/terraform-oci-naming/compare/v1.0.2...v2.0.0) (2026-11-06)
 
 

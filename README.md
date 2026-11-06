@@ -9,7 +9,7 @@ Copy [context.tf](https://github.com/cloudposse/terraform-null-label/blob/main/e
 ```hcl
 module "naming" {
   source  = "blissflow-tech/naming/oci"
-  version = "~> 2.0"
+  version = "~> 2.1"
 
   context    = module.this.context
   names      = ["logs", "app"]
