@@ -13,6 +13,11 @@ output "ids" {
   value       = { for k, v in module.label : k => v.id }
 
   precondition {
+    condition     = length(setsubtract(keys(var.name_overrides), var.names)) == 0
+    error_message = "name_overrides has keys missing from names: ${join(", ", setsubtract(keys(var.name_overrides), var.names))}"
+  }
+
+  precondition {
     condition     = local.region_key == module.this.environment
     error_message = "environment must be the lowercase key of a subscribed region: ${var.region} is ${coalesce(local.region_key, "not subscribed")}, environment is ${coalesce(module.this.environment, "unset")}"
   }
