@@ -1,41 +1,39 @@
-variable "prefix" {
-  description = "Business or application prefix (e.g. app, platform)"
-  type        = string
-
-  validation {
-    condition     = can(regex("^[a-z0-9._-]+$", var.prefix))
-    error_message = "prefix must only contain lowercase alphanumeric, ., -, _"
+variable "context" {
+  description = "Cloud Posse null-label context, usually module.this.context from a context.tf"
+  type        = any
+  default = {
+    enabled             = true
+    namespace           = null
+    tenant              = null
+    environment         = null
+    stage               = null
+    name                = null
+    delimiter           = null
+    attributes          = []
+    tags                = {}
+    additional_tag_map  = {}
+    regex_replace_chars = null
+    label_order         = []
+    id_length_limit     = null
+    label_key_case      = null
+    label_value_case    = null
+    descriptor_formats  = {}
+    labels_as_tags      = ["unset"]
   }
 }
 
-variable "environment" {
-  description = "Deployment environment (dev, qa, prod, etc.)"
-  type        = string
-
-  validation {
-    condition     = can(regex("^[a-z0-9]+$", var.environment))
-    error_message = "environment must be lowercase alphanumeric"
-  }
+variable "names" {
+  description = "Names to build an ID for, each appended to the context as its name label"
+  type        = set(string)
+  default     = []
 }
 
 variable "region" {
-  description = "OCI region (e.g. us-ashburn-1). Known regions map to their three-letter airport code; others use the first three characters."
+  description = "OCI region identifier (e.g. us-ashburn-1). The context environment must be its region key in lowercase (e.g. iad)"
   type        = string
 }
 
-variable "unique" {
-  description = "Whether to append a random hex suffix that stays stable while prefix, environment and region stay the same"
-  type        = bool
-  default     = true
-}
-
-variable "unique_length" {
-  description = "Length of the generated unique suffix"
-  type        = number
-  default     = 4
-
-  validation {
-    condition     = var.unique_length >= 2 && var.unique_length <= 8
-    error_message = "unique_length must be between 2 and 8"
-  }
+variable "tenancy_id" {
+  description = "OCID of the tenancy, used to check that the region is subscribed"
+  type        = string
 }
