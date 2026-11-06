@@ -37,3 +37,14 @@ variable "tenancy_id" {
   description = "OCID of the tenancy, used to check that the region is subscribed"
   type        = string
 }
+
+variable "name_overrides" {
+  description = "Per-name label settings for resource fields stricter than the defaults, keyed by an entry in names (e.g. an alphanumeric-only prefix)"
+  type = map(object({
+    delimiter           = optional(string)
+    regex_replace_chars = optional(string)
+    id_length_limit     = optional(number)
+    label_value_case    = optional(string)
+  }))
+  default = {}
+}

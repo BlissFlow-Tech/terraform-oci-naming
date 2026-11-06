@@ -28,6 +28,10 @@ module "label" {
   version  = "0.25.0"
   for_each = var.names
 
-  context = module.this.context
-  name    = each.key
+  context             = module.this.context
+  name                = each.key
+  delimiter           = try(var.name_overrides[each.key].delimiter, null)
+  regex_replace_chars = try(var.name_overrides[each.key].regex_replace_chars, null)
+  id_length_limit     = try(var.name_overrides[each.key].id_length_limit, null)
+  label_value_case    = try(var.name_overrides[each.key].label_value_case, null)
 }

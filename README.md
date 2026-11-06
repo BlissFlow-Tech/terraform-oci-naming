@@ -31,6 +31,14 @@ With `namespace = "acme"`, `environment = "iad"` and `stage = "prod"`, `ids["log
 * Labels join in the order `namespace`, `tenant`, `environment`, `stage`, `name`, `attributes`, skipping empty ones. A context that sets its own `label_order` keeps it.
 * `environment` is the region: it must be the lowercase key of `region` (`us-ashburn-1` is `iad`). The plan fails unless the region is subscribed in the tenancy and the key matches.
 * IDs longer than 100 characters are truncated with a hash suffix. A context that sets `id_length_limit` keeps it.
+* Fields stricter than the defaults take a `name_overrides` entry. An Object Storage private endpoint prefix allows only alphanumerics up to 63 characters:
+
+  ```hcl
+  names          = ["pe"]
+  name_overrides = { pe = { delimiter = "", regex_replace_chars = "/[^a-z0-9]/", id_length_limit = 63 } }
+  ```
+
+  gives `acmeiadprodpe`. Disallowed characters are removed and the length is capped, so the ID fits the field by construction.
 * `tags` carries the `namespace`, `tenant`, `environment` and `stage` labels plus `Name`, within the OCI limit of 10 free-form tags.
 
 <!-- BEGIN_TF_DOCS -->
@@ -67,6 +75,7 @@ With `namespace = "acme"`, `environment = "iad"` and `stage = "prod"`, `ids["log
 | region | OCI region identifier (e.g. us-ashburn-1). The context environment must be its region key in lowercase (e.g. iad) | `string` | n/a | yes |
 | tenancy\_id | OCID of the tenancy, used to check that the region is subscribed | `string` | n/a | yes |
 | context | Cloud Posse null-label context, usually module.this.context from a context.tf | `any` | <pre>{<br/>  "additional_tag_map": {},<br/>  "attributes": [],<br/>  "delimiter": null,<br/>  "descriptor_formats": {},<br/>  "enabled": true,<br/>  "environment": null,<br/>  "id_length_limit": null,<br/>  "label_key_case": null,<br/>  "label_order": [],<br/>  "label_value_case": null,<br/>  "labels_as_tags": [<br/>    "unset"<br/>  ],<br/>  "name": null,<br/>  "namespace": null,<br/>  "regex_replace_chars": null,<br/>  "stage": null,<br/>  "tags": {},<br/>  "tenant": null<br/>}</pre> | no |
+| name\_overrides | Per-name label settings for resource fields stricter than the defaults, keyed by an entry in names (e.g. an alphanumeric-only prefix) | <pre>map(object({<br/>    delimiter           = optional(string)<br/>    regex_replace_chars = optional(string)<br/>    id_length_limit     = optional(number)<br/>    label_value_case    = optional(string)<br/>  }))</pre> | `{}` | no |
 | names | Names to build an ID for, each appended to the context as its name label | `set(string)` | `[]` | no |
 
 ## Outputs
