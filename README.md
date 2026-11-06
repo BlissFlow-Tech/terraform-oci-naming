@@ -27,7 +27,6 @@ Names have the shape `<prefix>-<environment>-<region-short>-<kind>[-<suffix>]`, 
 
 * The suffix comes from a `random_id` that only changes when `prefix`, `environment` or `region` change, so names stay stable across applies.
 * Every name is truncated to 100 characters.
-* The module reads `oci_identity_regions`, so it needs a configured `oci` provider even though it creates no OCI resources.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -35,7 +34,6 @@ Names have the shape `<prefix>-<environment>-<region-short>-<kind>[-<suffix>]`, 
 | Name | Version |
 | ---- | ------- |
 | terraform | >= 1.3 |
-| oci | >= 8.0, < 10.0 |
 | random | >= 3.0, < 4.0 |
 
 ## Providers
