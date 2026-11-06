@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/BlissFlow-Tech/terraform-oci-naming/compare/v1.0.2...v2.0.0) (2026-11-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* build names from a Cloud Posse null-label context ([#7](https://github.com/BlissFlow-Tech/terraform-oci-naming/issues/7))
+
+### Features
+
+* build names from a Cloud Posse null-label context ([#7](https://github.com/BlissFlow-Tech/terraform-oci-naming/issues/7)) ([c28cf51](https://github.com/BlissFlow-Tech/terraform-oci-naming/commit/c28cf510cd655edc2d1e6a764b3ae2b116cdcdc2))
+
 ## [1.0.2](https://github.com/BlissFlow-Tech/terraform-oci-naming/compare/v1.0.1...v1.0.2) (2026-11-06)
 
 
