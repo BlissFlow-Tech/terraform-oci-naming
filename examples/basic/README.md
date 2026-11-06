@@ -1,8 +1,8 @@
 # Basic example
 
-Builds the names for a production deployment in us-ashburn-1, such as `acme-prod-iad-os-bkt-1a2b3`.
+Builds the names `acme-iad-prod-app` and `acme-iad-prod-logs` for a production deployment in us-ashburn-1.
 
 ```sh
 terraform init
-terraform apply
+terraform apply -var tenancy_id=<tenancy OCID>
 ```

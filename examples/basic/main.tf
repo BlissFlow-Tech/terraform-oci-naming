@@ -1,17 +1,21 @@
+module "this" {
+  source  = "cloudposse/label/null"
+  version = "0.25.0"
+
+  namespace   = "acme"
+  environment = "iad"
+  stage       = "prod"
+}
+
 module "naming" {
   source = "../../"
 
-  prefix        = "acme"
-  environment   = "prod"
-  region        = "us-ashburn-1"
-  unique        = true
-  unique_length = 5
+  context    = module.this.context
+  names      = ["app", "logs"]
+  region     = "us-ashburn-1"
+  tenancy_id = var.tenancy_id
 }
 
-output "bucket_name" {
-  value = module.naming.objectstorage_bucket
-}
-
-output "policy_name" {
-  value = module.naming.iam_policy
+output "ids" {
+  value = module.naming.ids
 }
