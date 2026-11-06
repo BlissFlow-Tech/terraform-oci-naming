@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/BlissFlow-Tech/terraform-oci-naming/compare/v1.0.1...v1.0.2) (2026-11-06)
+
+
+### Bug Fixes
+
+* drop the unused oci provider requirement ([#5](https://github.com/BlissFlow-Tech/terraform-oci-naming/issues/5)) ([d0d082f](https://github.com/BlissFlow-Tech/terraform-oci-naming/commit/d0d082f2c05fb57fc8bf54c0edb8370e638bfd87))
+
 ## [1.0.1](https://github.com/BlissFlow-Tech/terraform-oci-naming/compare/v1.0.0...v1.0.1) (2026-11-04)
 
 
